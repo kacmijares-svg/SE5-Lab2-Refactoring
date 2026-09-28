@@ -14,13 +14,17 @@ class PwdListPage extends StatelessWidget {
       appBar: AppBar(title: const Text(AppConstants.appTitle)),
       body: records.isEmpty
           ? const Center(child: Text(AppConstants.noRecords))
-          : ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: records.length,
-              itemBuilder: (context, index) {
-                return _buildPwdCard(records[index]);
-              },
-            ),
+          : _buildRecordList(records),
+    );
+  }
+
+  Widget _buildRecordList(List<Pwd> records) {
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: records.length,
+      itemBuilder: (context, index) {
+        return _buildPwdCard(records[index]);
+      },
     );
   }
 
